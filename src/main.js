@@ -24,13 +24,14 @@ function onSubmit(e) {
   getImagesByQuery(query)
     .then(res => {
       if (res.data.hits.length === 0) {
+        hideLoader();
         iziToast.warning({
           message:
             'Sorry, there are no images matching your search query. Please try again!',
           color: 'red',
           position: 'topRight',
         });
-        hideLoader();
+
         return;
       }
 
