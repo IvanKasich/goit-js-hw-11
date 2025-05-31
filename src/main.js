@@ -30,7 +30,7 @@ function onSubmit(e) {
           color: 'red',
           position: 'topRight',
         });
-
+        hideLoader();
         return;
       }
 
