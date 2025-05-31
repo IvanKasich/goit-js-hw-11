@@ -23,7 +23,7 @@ function onSubmit(e) {
   showLoader();
   getImagesByQuery(query)
     .then(res => {
-      if (res.data.hits.length === 0) {
+      if (!res.data.hits || res.data.hits.length === 0) {
         hideLoader();
         iziToast.warning({
           message:
