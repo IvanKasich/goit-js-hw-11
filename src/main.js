@@ -23,7 +23,16 @@ function onSubmit(e) {
   showLoader();
   getImagesByQuery(query)
     .then(res => {
-      if (!res.data.hits || res.data.hits.length === 0 || query === '') {
+      if (query === '') {
+        hideLoader();
+        iziToast.warning({
+          message: 'Search field cannot be empty.',
+          position: 'topRight',
+        });
+        form.reset();
+        return;
+      }
+      if (!res.data.hits || res.data.hits.length === 0) {
         hideLoader();
         iziToast.warning({
           message:
